@@ -16,9 +16,10 @@ Inter (Google Fonts) – Tipografia legível e moderna para uma experiência de 
 📱 Design Responsivo
 Adaptado para todos os tamanhos de tela: mobile, tablet e desktop. A interface se ajusta perfeitamente em qualquer dispositivo.
 
-
 ## 🚀 Sobre mim
 Sou um desenvolvedor front-end apaixonado por criar interfaces modernas, funcionais e acessíveis. Trabalho com foco em performance, usabilidade e boas práticas de código.
 Atualmente estou aprofundando meus conhecimentos em React.js e Next.js, com uma base sólida em JavaScript, Tailwind CSS e design responsivo.
 
 Gosto de resolver problemas com código limpo e soluções criativas — sempre buscando entregar valor real para usuários e negócios. 🚀
+
+###  [Veja como ficou](https://wesleybsilva1.github.io/Mobxd---Landing-Page-Responsiva-com-Tailwind-CSS/)
