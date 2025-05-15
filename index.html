@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobxd</title>
+    <!-- favicon link -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- google font link -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- tailwind css  -->
+    <link rel="stylesheet" href="./src/output.css">
+    <!-- ionicons cdn -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <!-- alpine js cdn -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- style css -->
+    <style type="text/tailwindcss">
+        body{
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    
+
+<!-- ====== header ====== -->
+ <header x-data={navbarOpen:false} class="absolute sticky left-0 top-0 z-50 bg-white/90 w-full backdrop-blur">
+    <div class="mx-auto h-[90px] max-w-7xl px-8 md:px-6">
+        <div class="relative flex h-full items-center justify-between">
+            <!--logo-->
+            <div class="w-[13rem] max-w-full">
+                <a href="#">
+                    <img src="./images/logo.png"/>
+                </a>
+            </div>
+             <!--menu-->
+            <div class="flex w-full items-center justify-between" >
+                <nav x-transition :class="!navbarOpen && 'hidden'" id="navbarCollapse" class="bg-blue-500 absolute right-0 top-[90px] w-full  rounded-lg  border border-slate-200 py-5 px-6 shadow-lg shadow-blue-400/5 transition-all lg:static lg:block lg:max-w-full lg:border-none lg:shadow-none lg:bg-transparent lg:px-0 lg:py-0">
+                    <ul class="flex flex-col justify-center gap-8 lg:flex-row">
+                        <li>
+                            <a @click="navbarOpen = !navbarOpen" :class="navbarOpen && 'navbarTogglerActive'" href="#" class="text-lg font-medium text-white duration-200 hover:text-slate-700 hover:font-bold lg:text-base">Home</a>
+                        </li>
+                        <li>
+                            <a @click="navbarOpen = !navbarOpen" :class="navbarOpen && 'navbarTogglerActive'" href="#sobre" class="text-lg font-medium text-white duration-200 hover:text-slate-700 hover:font-bold lg:text-base">Sobre</a>
+                        </li>
+                        <li>
+                            <a @click="navbarOpen = !navbarOpen" :class="navbarOpen && 'navbarTogglerActive'" href="#servicos" class="text-lg font-medium text-white duration-200 hover:text-slate-700 hover:font-bold lg:text-base">Serviços</a>
+                        </li>
+                        <li>
+                            <a @click="navbarOpen = !navbarOpen" :class="navbarOpen && 'navbarTogglerActive'" href="#faq" class="text-lg font-medium text-white duration-200 hover:text-slate-700 hover:font-bold lg:text-base">FAQ</a>
+                        </li>
+                        <li>
+                            <a @click="navbarOpen = !navbarOpen" :class="navbarOpen && 'navbarTogglerActive'" href="#contato" class="text-lg font-medium text-white duration-200 hover:text-slate-700 hover:font-bold lg:text-base">Contato</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+           
+            <!--menu btn-->
+            <div class="flex">
+                <a href="#" class="mr-10 hidden rounded-md bg-blue-500 px-8 py-2.5 font-semibold text-white shadow-md shadow-blue-500/20 duration-200 hover:bg-blue-600 sm:block lg:mr-0">Register</a>
+                <button @click="navbarOpen = !navbarOpen" :class="navbarOpen && 'navbarTogglerActive'" class="block lg:hidden">
+                    <ion-icon name="menu-outline" class="text-4xl text-blue-500"></ion>
+                </button>
+            </div>
+        </div>
+    </div>
+ </header>
+
+
+<!-- ====== END header ====== -->
+
+
+<!-- ====== hero ====== -->
+<section class="relative bg-white py-16 lg:pt-[100px] -z-1">
+    <div class="mx-auto max-w-7xl px-8 md:px-6">
+        <div class="flex flex-wrap">
+            <div class="w-full lg:w-5/12">
+                <h1 class="leading-[3rem] text-slate-800 mb-3 text-4xl font-bold sm:text-[42px lg:text-[40px] xl:text-[42px]">Tudo o que você precisa para gerenciar seu <span class="text-blue-600">negócio</span> online</h1>
+                <p class="text-slate-500 mb-8 max-w-[480px] text-base">Desenvolvemos soluções inteligentes para transformar sua presença digital e maximizar seus resultados com praticidade, velocidade e inovação.</p>
+                <button class="w-full rounded-md bg-blue-500 px-8 py-2.5 font-semibold text-white shadow-md shadow-blue-500/20 hover:bg-blue-600 duration-200 sm:w-auto">Comece agora</button>
+                <button class="mt-4 box-border w-full rounded-md border border-blue-500/20 px-8 py-2.5 font-semibold text-blue-500 shadow-md shadow-blue-500/10 duration-200 sm:ml-4 sm:mt-0 sm:w-auto hover:bg-blue-500/20">Registre-se</button>
+
+                <!--brand-->
+                <div class="mt-6 flex flex-wrap gap-4">
+                    <img src="/images/brand/brand (1).png" alt="marca soflex" class="w-32 cursor-pointer rounded-lg border border-blue-300/20 bg-white px-5 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-95 sm:w-36">
+                    <img src="/images/brand/brand (2).png" alt="marca flairo" class="w-32 cursor-pointer rounded-lg border border-blue-300/20 bg-white px-5 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-95 sm:w-36">
+                    <img src="/images/brand/brand (3).png" alt="marca cloudcode" class="w-32 cursor-pointer rounded-lg border border-blue-300/20 bg-white px-5 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-95 sm:w-36">
+                    <img src="/images/brand/brand (4).png" alt="marca outshifter" class="w-32 cursor-pointer rounded-lg border border-blue-300/20 bg-white px-5 py-3 shadow-md shadow-blue-500/5 duration-200 hover:scale-95 sm:w-36">
+                </div>
+                <div class="hidden px-4 lh:block lg:w-1/2"></div>
+            </div>
+              <div class="w-full px-4 lg:w-6/12">
+                    <div class="lg:ml-auto lg:text-right">
+                        <div class="relative z-10 inline-block pt-11 lg:pt-0">
+                            <img src="/images/hero.png" alt="homem com computador" class="w-full lg:ml-auto">
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== END hero ====== -->
+
+
+<!-- ====== features ====== -->
+<section class="pb-16">
+    <div class="mx-auto max-w-7xl px-8 md:px-6">
+        <div class="mb-5 sm:mb-10">
+            <span class="font-medium text-blue-500">Nossos Recursos</span>
+            <h1 class="text-2xl font-bold text-slate-700 sm:text-3xl">Conheça Nossos Diferenciais</h1>
+        </div>
+        <!--features img-->
+        <div class="md:flex md:justify-between md:gap-6 xl:gap-10">
+            <div class="mb-5 max-h-[600px] overflow-hidden rounded-lg md:mb-0 md:w-5/12">
+                <img src="/images/features/features.png" alt="Descrição dos Diferenciais" class="h-full scale-125 sm:w-full sm:object-cover">
+            </div>
+            <div class="md:w-7/12">
+                <div class="mb-16 flex flex-col">
+                    <h2 class="font-semibold text-blue-500 text-left mb-2">Utilizamos estratégias eficazes e tecnologia de ponta para acelerar o crescimento do seu negócio</h2>
+                    <p class="mb-3 text-slate-500">Aliamos inteligência de mercado, análise de dados
+                        e metodologias ágeis para desenvolver soluções que realmente fazem a diferença. Cada projeto é tratado de forma personalizada, com foco em resultados concretos e escaláveis.
+                        Nosso objetivo é impulsionar a presença digital da sua marca, aumentando sua visibilidade e gerando mais oportunidades de negócio.
+                    </p>
+                    
+                    <h2 class="font-semibold text-blue-500 text-left mb-2">Criamos experiências digitais únicas com foco em usabilidade e performance</h2>
+
+                    <p>Do layout à navegação, cada detalhe é pensado para oferecer uma jornada fluida, intuitiva e envolvente para o usuário. Trabalhamos com design responsivo,
+                        velocidade otimizada e integração eficiente de sistemas para garantir máxima performance, tanto para quem acessa quanto para quem gerencia.
+                    </p>
+
+                    <button class="w-full rounded-md bg-blue-500 px-8 py-2.5 mt-3 font-semibold text-white shadow-md shadow-blue-500/20 hover:bg-blue-600 duration-200 md:w-max">Comece agora</button>
+                </div>
+                <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="flex flex-col items-center justify-center rounded-xl bg-white px-4 py-8 shadow-lg">
+                        <img src="/images/features/icon (1).png" alt="camadas sobrepostas" class="mb-3 w-16">
+                        <h3 class="text-lg font-bold text-slate-600">Web Design</h3>
+                        <a href="#" class="text-sm text-blue-500">Descubra mais</a>
+                    </div>
+                    <div class="flex flex-col items-center justify-center rounded-xl bg-white px-4 py-8 shadow-lg">
+                        <img src="/images/features/icon (2).png" alt="" class="mb-3 w-16">
+                        <h3 class="text-lg font-bold text-slate-600">Automação</h3>
+                        <a href="#" class="text-sm text-blue-500">Descubra mais</a>
+                    </div>
+                    <div class="flex flex-col items-center justify-center rounded-xl bg-white px-4 py-8 shadow-lg">
+                        <img src="/images/features/icon (3).png" alt="" class="mb-3 w-16">
+                        <h3 class="text-lg font-bold text-slate-600">Infográficos</h3>
+                        <a href="#" class="text-sm text-blue-500">Descubra mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ====== END features ====== -->
+
+
+<!-- ====== about ====== -->
+<section class="py-16" id="sobre">
+    <div class="mx-auto max-w-7xl px-8 p-6">
+        <div class="md:flex md:justify-between md:gap-6">
+            <div class="md:w-6/12">
+                <!--heading text-->
+                <div class="mb-5">
+                    <span class="font-medium text-blue-500">Sobre nós</span>
+                    <h1 class="text-2xl font-bold text-slate-700 sm:text-3xl">Quem somos e o que fazemos</h1>
+                </div>
+                <p class="mb-3 text-slate-500 md:mb-6">Somos especialistas em criar estratégias que conectam marcas às pessoas, com criatividade, dados e resultados reais.</p>
+                <p class="mb-3 text-slate-500 md:mb-6"> Nosso time é apaixonado por inovação e excelência em cada entrega. Combinamos design, tecnologia e marketing para gerar valor ao seu negócio.</p>
+                <p class="mb-3 font-medium text-blue-500 md:mb-6">Transformamos ideias em ações com impacto.</p>
+                <ul>
+                    <li class="mb-6 flex items-center">
+                        <div class="flex h-[35px] w-[35px] min-w-[35px] items-center justify-center rounded-full bg-blue-500 text-white">
+                            <ion-icon name="briefcase-outline" class="mx-auto"></ion-icon>
+                        </div>
+                        <p class="ml-4 max-w-md font-medium text-slate-600">Compromisso com Resultados</p>
+                    </li>
+                    <li class="mb-6 flex items-center">
+                        <div class="flex h-[35px] w-[35px] min-w-[35px] items-center justify-center rounded-full bg-blue-500 text-white">
+                            <ion-icon name="cube-outline" class="mx-auto"></ion-icon>
+                        </div>
+                        <p class="ml-4 max-w-md font-medium text-slate-600">Soluções Inteligentes e Modulares</p>
+                    </li>
+                    <li class="mb-6 flex items-center">
+                        <div class="flex h-[35px] w-[35px] min-w-[35px] items-center justify-center rounded-full bg-blue-500 text-white">
+                            <ion-icon name="mail-unread-outline" class="mx-auto"></ion-icon>
+                        </div>
+                        <p class="ml-4 max-w-md font-medium text-slate-600">Comunicação Clara e Ágil</p>
+                    </li>
+                </ul>
+                <button class="w-full rounded-md bg-blue-500 px-8 py-2.5 mt-3 font-semibold text-white shadow-md shadow-blue-500/20 hover:bg-blue-600 duration-200 md:w-max">Comece agora</button>
+            </div>
+            <!--about img-->
+            <div class="mt-8 flex justify-center md:mt-0 md:w-5/12">
+                <img src="/images/about.png" alt="imagem de um telefone com icones de redes sociais(twitter, facebook, instagram, whatsapp e pinterest) com um mao segurando um megafone"
+                class="nax-h-[500px] md:max-h-max">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ====== END about ====== -->
+
+
+<!-- ====== service ====== -->
+<section class="py-16" id="servicos">
+    <div class="mx-auto max-w-7xl px-8 md:px-6 text-center ">
+        <div class="mb-10 text-center">
+            <span class="font-medium text-blue-500">Nossos Serviços</span>
+            <h1 class="text-2xl font-bold text-slate-700 sm:text-3xl">Serviços Incríveis para o Seu Negócio</h1>
+            <p class="mx-auto mt-2 text-slate-500">Ajudamos empresas a crescer com soluções personalizadas, do branding ao desempenho.</p>
+        </div>
+        <!--box wrapper-->
+        <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:gap-8">
+            <div class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300-10 duration-200 hover:bg-blue-500/10">
+                <ion-icon name="bar-chart-outline" class="text-[55px]  text-slate-500  group-hover:text-blue-500"></ion-icon>
+                <h4 class="mt-3 mb-1 w-full font-semibold text-slate-500 duration-200 sm:ml-4 sm:mt-0 sm:w-auto group-hover:text-blue-500">Feito para Startups</h4>
+                <p class="mx-auto mt-2 text-slate-500 group-hover:text-blue-500" >Oferecemos pacotes flexíveis e escaláveis pensados para empresas em fase de crescimento, com entrega rápida e soluções que acompanham a evolução do seu negócio sem comprometer a qualidade.</p>
+            </div>
+            <div class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300-10 duration-200 bg-blue-500/10">
+                <ion-icon name="extension-puzzle-outline" class="text-[55px]  text-blue-500"></ion-icon>
+                <h4 class="mt-3 mb-1 w-full font-semibold duration-200 sm:ml-4 sm:mt-0 sm:w-auto text-blue-500">Totalmente Personalizável</h4>
+                <p class="mx-auto mt-2  text-blue-500" >Cada projeto é construído sob medida: desde a identidade visual até funcionalidades avançadas, você decide o que precisa e nós adaptamos nossos processos para garantir máxima aderência às suas expectativas.</p>
+            </div>
+            <div class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300-10 duration-200 hover:bg-blue-500/10">
+                <ion-icon name="speedometer-outline" class="text-[55px]  text-slate-500  group-hover:text-blue-500"></ion-icon>
+                <h4 class="mt-3 mb-1 w-full font-semibold text-slate-500 duration-200 sm:ml-4 sm:mt-0 sm:w-auto group-hover:text-blue-500">Desempenho Otimizado</h4>
+                <p class="mx-auto mt-2 text-slate-500 group-hover:text-blue-500" >Aplicamos técnicas avançadas de otimização de código, cache inteligente e compressão de recursos, para que seu site ou sistema carregue em frações de segundo, mesmo sob alto volume de acesso.</p>
+            </div>
+            <div class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300-10 duration-200 hover:bg-blue-500/10">
+                <ion-icon name="diamond-outline" class="text-[55px]  text-slate-500  group-hover:text-blue-500"></ion-icon>
+                <h4 class="mt-3 mb-1 w-full font-semibold text-slate-500 duration-200 sm:ml-4 sm:mt-0 sm:w-auto group-hover:text-blue-500">Design de Alta Qualidade</h4>
+                <p class="mx-auto mt-2 text-slate-500 group-hover:text-blue-500" >Nossos designers criam interfaces modernas e impactantes, combinando estética e usabilidade, para que sua marca se destaque no mercado e proporcione experiências envolventes aos usuários.</p>
+            </div>
+            <div class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300-10 duration-200 hover:bg-blue-500/10">
+                <ion-icon name="file-tray-full-outline" class="text-[55px]  text-slate-500  group-hover:text-blue-500"></ion-icon>
+                <h4 class="mt-3 mb-1 w-full font-semibold text-slate-500 duration-200 sm:ml-4 sm:mt-0 sm:w-auto group-hover:text-blue-500">Todas as Seções Essenciais</h4>
+                <p class="mx-auto mt-2 text-slate-500 group-hover:text-blue-500" >Identificamos e desenvolvemos cada módulo fundamental — desde formulários de contato até galerias interativas — garantindo que seu site tenha tudo o que é necessário para converter visitantes em clientes.</p>
+            </div>
+            <div class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300-10 duration-200 hover:bg-blue-500/10">
+                <ion-icon name="cloud-download-outline" class="text-[55px]  text-slate-500  group-hover:text-blue-500"></ion-icon>
+                <h4 class="mt-3 mb-1 w-full font-semibold text-slate-500 duration-200 sm:ml-4 sm:mt-0 sm:w-auto group-hover:text-blue-500">Atualizações Frequentes</h4>
+                <p class="mx-auto mt-2 text-slate-500 group-hover:text-blue-500" >Mantemos sua solução sempre atualizada com as últimas tendências de tecnologia e segurança, além de oferecer suporte contínuo para implementar melhorias e ajustes conforme seu negócio evolui.</p>
+            </div>
+           
+        </div>
+    </div>
+
+</section>
+
+<!-- ====== END service ====== -->
+
+
+<!-- ====== FAQ ====== -->
+<section class="py-16" id="faq">
+    <div class="mx-auto max-w-7xl px-8 md:px-6">
+          <div class="mb-10">
+            <span class="font-medium text-blue-500">Nosso FAQ </span>
+            <h1 class="text-2xl font-bold text-slate-700 sm:text-3xl">Perguntas Frequentes</h1>
+            <!--wrapper-->
+            <div class="md:flex md:justify-between md:gap-6">
+               <div class="mb-8 flex justify-center md:mb-0 md:w-5/12">
+                 <img src="/images/faq.png" alt="homem e menina com lupa procurando erros em um checklist" class="max-h-[500px] md:max-h-max">
+               </div>
+               <div class="md:w-6/12">
+                <div x-data="{selected:null}">
+                    <ul>
+                        <li class="relative mb-5"> 
+                            <button type="button" class="w-full rounded-lg bg-blue-50 px-8 py-6 text-left" @click="selected !== 1 ? selected = 1 : selected = null">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-medium text-slate-600">Como funciona o processo de contratação?</h4>
+                                    <ion-icon name="chevron-down-circle-outline" class="w-8 text-lg text-blue-500"></ion-icon>
+                                </div>
+                            </button>
+                            <div class="relative max-h-0 overflow-hidden rounded-b-lg bg-blue-50/30 transition-all duration-500" x-ref="container1" x-bind:style="selected == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                                <div class="p-6">
+                                    <p class="text-slate-500">Nosso time entra em contato, entende suas necessidades e propõe a melhor solução.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="relative mb-5"> 
+                            <button type="button" class="w-full rounded-lg bg-blue-50 px-8 py-6 text-left" @click="selected !== 2 ? selected = 2 : selected = null">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-medium text-slate-600">Quais os prazos de entrega?</h4>
+                                    <ion-icon name="chevron-down-circle-outline" class="w-8 text-lg text-blue-500"></ion-icon>
+                                </div>
+                            </button>
+                            <div class="relative max-h-0 overflow-hidden rounded-b-lg bg-blue-50/30 transition-all duration-500" x-ref="container2" x-bind:style="selected == 2 ? 'max-height: ' + $refs.container2.scrollHeight + 'px' : ''">
+                                <div class="p-6">
+                                    <p class="text-slate-500">Depende do projeto, mas sempre prezamos pela pontualidade e transparência.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="relative mb-5"> 
+                            <button type="button" class="w-full rounded-lg bg-blue-50 px-8 py-6 text-left" @click="selected !== 3 ? selected = 3 : selected = null">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-medium text-slate-600">Posso solicitar alterações depois da entrega?</h4>
+                                    <ion-icon name="chevron-down-circle-outline" class="w-8 text-lg text-blue-500"></ion-icon>
+                                </div>
+                            </button>
+                            <div class="relative max-h-0 overflow-hidden rounded-b-lg bg-blue-50/30 transition-all duration-500" x-ref="container3" x-bind:style="selected == 3 ? 'max-height: ' + $refs.container3.scrollHeight + 'px' : ''">
+                                <div class="p-6">
+                                    <p class="text-slate-500">Sim, oferecemos suporte e ajustes conforme o plano contratado.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="relative mb-5"> 
+                            <button type="button" class="w-full rounded-lg bg-blue-50 px-8 py-6 text-left" @click="selected !== 4 ? selected = 4 : selected = null">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-medium text-slate-600">Oferecem suporte contínuo?</h4>
+                                    <ion-icon name="chevron-down-circle-outline" class="w-8 text-lg text-blue-500"></ion-icon>
+                                </div>
+                            </button>
+                            <div class="relative max-h-0 overflow-hidden rounded-b-lg bg-blue-50/30 transition-all duration-500" x-ref="container4" x-bind:style="selected == 4 ? 'max-height: ' + $refs.container4.scrollHeight + 'px' : ''">
+                                <div class="p-6">
+                                    <p class="text-slate-500">Sim! Nosso atendimento é personalizado e sempre disponível para você.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ====== Contact ====== -->
+<section class="relative overflow-hidden py-16" id="contato">
+    <img src="images/effect.png" alt="" class="absolute bottom-[-400px] -z-10 w-full opacity-[0.2]">
+    <div class="mx-auto max-w-7xl px-8 md:px-6">
+        <div class="-mx-4 flex flex-wrap lg:justify-between">
+            <div class="w-full px-4 md:w-1/2 xl:w-6/12">
+                <div class="mb-12 max-w-[570px] lg:mb-0">
+                    <span class="font-medium text-blue-500">Fale Conosco</span>
+                    <h1 class="mb-3 text-2xl font-bold text-slate-700 sm:text-3xl">Envie uma mensagem</h1>
+                    <p class="text-slate-500 mb-8">Estamos prontos para ajudar sua empresa a alcançar novos patamares. Entre em contato e fale com um de nossos especialistas.</p>
+                    <div class="mb-8 flex w-full max-w-[420px] items-center rounded-lg bg-white p-4 shadow-md shadow-blue-500/10">
+                        <div class="me-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-blue-500 bg-opacity-5 text-blue-500 sm:h-[70px] sm:max-w-[70px]">
+                            <ion-icon name="location-outline" class="text-3xl"></ion-icon>
+                        </div>
+                        <div class="w-full">
+                            <h4 class="mb-1 text-xl font-bold text-slate-700">Onde Estamos</h4>
+                            <p class="text-base text-slate-400">
+                                <a href="https://maps.app.goo.gl/xvmsjXTaH8Ueju7F8" class="hover:text-blue-600">
+                                     Avenida Radial Leste-Oeste 1898, São Paulo
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-8 flex w-full max-w-[420px] items-center rounded-lg bg-white p-4 shadow-md shadow-blue-500/10">
+                        <div class="me-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-blue-500 bg-opacity-5 text-blue-500 sm:h-[70px] sm:max-w-[70px]">
+                            <ion-icon name="call-outline" class="text-3xl"></ion-icon>
+                        </div>
+                        <div class="w-full">
+                            <h4 class="mb-1 text-xl font-bold text-slate-700">Telefone</h4>
+                            <p class="text-base text-slate-400">
+                                <a href="https://api.whatsapp.com/send?phone=551136642428&text=Ol%C3%A1%2C%20tenho%20uma%20ideia!%20" class="hover:text-blue-600">(11) 3664-2428</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-8 flex w-full max-w-[420px] items-center rounded-lg bg-white p-4 shadow-md shadow-blue-500/10">
+                        <div class="me-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-blue-500 bg-opacity-5 text-blue-500 sm:h-[70px] sm:max-w-[70px]">
+                            <ion-icon name="mail-outline" class="text-3xl"></ion-icon>
+                        </div>
+                        <div class="w-full">
+                            <h4 class="mb-1 text-xl font-bold text-slate-700">E-mail</h4>
+                            <p class="text-base text-slate-400">
+                                <a href="mailto:contato@mobxd.com.br"  class="hover:text-blue-600">contato@mobxd.com.br</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--right form-->
+            <div class="w-full px-4 md:w-1/2 xl:w-5/12">
+                <div class="relative rounded-lg bg-white p-8 shadow-lg shadow-blue-500/10 sm:p-12">
+                    <form action="">
+                        <div class="mb-6">
+                            <input type="text" placeholder="Seu nome aqui" class="w-full rounded-lg border border-blue-500/10 px-4 py-3 text-slate-500 focus:border-blue-500 focus:outline-none">
+                        </div>
+                        <div class="mb-6">
+                            <input type="email" placeholder="Seu email aqui" class="w-full rounded-lg border border-blue-500/10 px-4 py-3 text-slate-500 focus:border-blue-500 focus:outline-none">
+                        </div>
+                        <div class="mb-6">
+                            <input type="password" placeholder="Sua senha aqui" class="w-full rounded-lg border border-blue-500/10 px-4 py-3 text-slate-500 focus:border-blue-500 focus:outline-none">
+                        </div>
+                        <div class="mb-6">
+                            <textarea name="messagem" rows="6" class="resize-none w-full rounded-lg border border-blue-500/10 px-4 py-3 text-slate-500 focus:border-blue-500 focus:outline-none"></textarea>
+                        </div>
+                        <div class="">
+                            <button type="submit" class="w-full rounded border border-blue-300 bg-blue-500 p-3 text-white transition-all hover:bg-opacity-90">Fale com a gente agora</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- ====== END Contact ====== -->
+
+<!-- ====== footer ====== -->
+<footer class="bg-slate-50/80 pt-16">
+    <div class="mx-auto max-w-7xl px-8 md:px-6">
+        <div class="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
+            <div class="md:max-w-md lg:col-span-2">
+                <img src="/images/logo.png" alt="logo do rodapé (mobxd)" class="w-36">
+                <div class="mt-4 lg:max-w-sm">
+                    <p class="text-sm text-slate-500">Trabalhamos com comprometimento e excelência para entregar os melhores resultados.</p>
+                    <p class="text-sm text-slate-500 mt-2">Acreditamos que cada projeto é único e merece dedicação total e criatividade.</p>
+                </div>
+            </div>
+            <div class="grid row-gap-8 grid-cols-2 gap-5 md:grid-cols-4 lg:col-span-4">
+                <div class="">
+                    <!--head-->
+                    <p class="font-semibold text-slate-700">Categorias</p>
+                    <ul class="mt-2 space-y-2">
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Notícias</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Mundo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Jogos</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Referências</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="">
+                    <!--head-->
+                    <p class="font-semibold text-slate-700">Negócios</p>
+                    <ul class="mt-2 space-y-2">
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Web</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Ecommerce</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Empresarial</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Entretenimento</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="">
+                    <!--head-->
+                    <p class="font-semibold text-slate-700">Artigos</p>
+                    <ul class="mt-2 space-y-2">
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Mídia</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Catálogo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">ONG</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Educação</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Projetos</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="">
+                    <!--head-->
+                    <p class="font-semibold text-slate-700">Fórum</p>
+                    <ul class="mt-2 space-y-2">
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Infoprodutor</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Pessoal</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Wiki</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-slate-500 transition-colors duration-300 hover:text-slate-700">Newsletter</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class=" border-t pt-8 sm:flex-row text-xl">
+          <div class="flex flex-row items-center justify-center">
+              <a href="https://api.whatsapp.com/send?phone=5511972592241&text=Vi%20o%20seu%20trabalho%20e%20queria%20trocar%20uma%20ideia%2C%20curti%20demais!" class="text-slate-700 hover:text-blue-600">© Todos os direitos reservados 2025 Wesley Silva</a>
+          </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ====== END footer ====== -->
+
+
+
+</body>
+</html>
